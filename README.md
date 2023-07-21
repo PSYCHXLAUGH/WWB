@@ -10,3 +10,4 @@
 - переходим по адресу 127.0.0.1/admin/ и авторизируемся в админке
 - добавляем категории
 - окончательный запуск в режиме отладки manage.py runserver
+![result](https://github.com/PSYCHXLAUGH/WWB/blob/main/demo.png)
