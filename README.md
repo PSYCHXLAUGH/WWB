@@ -7,6 +7,6 @@
 - manage.py migrate
 - manage.py createsuperuser
 - manage.py runserver
-- переходим по адресу 127.0.0.1/admin и авторизируемся в админке
+- переходим по адресу 127.0.0.1/admin/ и авторизируемся в админке
 - добавляем категории
 - окончательный запуск в режиме отладки manage.py runserver
