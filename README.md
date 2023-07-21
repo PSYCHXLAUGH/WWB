@@ -1,6 +1,7 @@
 # Для проверки
 - python3 -m virtualenv env
 - source env/bin/activate
+- pip install -r requirements.txt
 - manage.py makemigrations paper
 - manage.py migrate paper
 - manage.py migrate
