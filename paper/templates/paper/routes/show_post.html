@@ -1,0 +1,32 @@
+{% extends 'paper/base.html' %}
+
+
+{% if request.user.is_authenticated %}
+{% block content %}
+{% if post.is_published %}
+<ul>
+    <div class="container p-5 my-5 bg-primary text-white border border-dark">
+        <span class="badge bg-secondary">{{ post.time_update|date:"d-m-Y H:i:s" }}</span>
+        <span class="badge bg-dark">{{ post.cat }} </span>
+        <hr>
+        <h2>{{post.title}}</h2>
+        <p>{{ post.content | linebreaks | truncatewords:10 }}</p>
+        <a href="{% url 'home' %}" class="link-light">{{ base_context.index_home_state }}</a>
+        {% if post.photo %}
+        <hr>
+        <img src="{{post.photo.url}}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+        {% endif %}
+    </div>
+</ul>
+{% else %}
+
+<div class="container p-5 my-5 text-white border-dark">
+    <div class="alert alert-danger" role="alert">
+        {{ base_context.index_publish }}
+    </div>
+</div>
+
+{% endif %}
+{% endblock content %}
+
+{% endif %}

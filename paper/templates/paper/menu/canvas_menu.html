@@ -1,0 +1,35 @@
+<div class="offcanvas offcanvas-start" id="user_menu">
+    <div class="offcanvas-header">
+        <!-- добавить мол добрый день вася -->
+        <h1 class="offcanvas-title">Здравствуйте {{ request.user.username }}!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <!-- если регистрации нет то выводить кнопку регистрации -->
+                <li class="nav-item">
+                    <a href="{% url 'addpage' %}" class="btn btn-white btn-block" role="button" aria-disabled="true">
+                        {{ base_context.menu_button_addpage }}
+                    </a>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#myModal">
+                        {{ base_context.menu_button_modal }}
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'home' %}" class="btn btn-white btn-block" role="button" aria-disabled="true">
+                        {{ base_context.menu_button_home }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="btn btn-white btn-block" role="button" aria-disabled="true">
+                        {{ base_context.menu_button_logout }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

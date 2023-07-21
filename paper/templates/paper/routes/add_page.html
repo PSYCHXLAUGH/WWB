@@ -1,0 +1,27 @@
+{% extends 'paper/base.html' %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <h2>{{ base_context.index_addpage_header }}</h2>
+    <form action="{% url 'addpage' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for f in form %}
+
+        <div class="mb-3 mt-3">
+            <label for="{{ f.id_for_label }}" class="form-label">{{ f.label }}</label>
+            {{ f }}
+        </div>
+
+        {% if f.errors %}
+        <div class="alert alert-danger alert-dismissible fade show">
+            {{ f.errors }}
+        </div>
+        {% endif %}
+
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">{{ base_context.index_addpage_button }}</button>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends 'paper/base.html' %}
+
+
+{% if request.user.is_authenticated %}
+{% block content %}
+{% if counter > 0 %}
+<ul>
+    {% for p in posts %}
+    {% if p.is_published %}
+    <div class="container p-5 my-5 bg-primary text-white border border-dark">
+        <span class="badge bg-secondary">{{ p.time_update|date:"d-m-Y H:i:s" }}</span>
+        <span class="badge bg-dark">{{ p.cat }} </span>
+        <hr>
+        <h2>{{p.title}}</h2>
+        <p>{{ p.content | linebreaks | truncatewords:10 }}</p>
+        <a href='{{ p.get_absolute_url }}' class="link-light">{{ base_context.index_open_state }}</a>
+        {% if p.photo %}
+        <hr>
+        <img src="{{p.photo.url}}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+        {% endif %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% if page_obj.has_other_pages %}
+
+<div class="container mt-3">
+
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        {% for p in paginator.page_range %}
+        {% if page_obj.number == p %}
+        <li class="page-item active"><a class="page-link">{{ p }}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{p}}">{{ p }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% else %}
+<div class="container p-5 my-5 text-info border-dark">
+    <div class="alert alert-info" role="alert">
+        {{ base_context.index_publish_none }}
+    </div>
+</div>
+{% endif %}
+{% endblock content %}
+
+{% endif %}

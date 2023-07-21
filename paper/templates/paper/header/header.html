@@ -1,0 +1,22 @@
+<div class="container-fluid p-5 bg-dark text-white text-center">
+    <h1>{{ base_context.main_header }}</h1>
+    <p>{{ base_context.main_about }}</p>
+
+    {% if request.user.is_authenticated %}
+
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#user_menu">
+        {{ base_context.main_button }}
+    </button>
+
+    {% else %}
+
+    <p>{{ base_context.main_register }}</p>
+    <a href="{% url 'register' %}" class="btn btn-white btn-success" role="button" aria-disabled="true">
+        {{ base_context.main_register_button }}
+    </a>
+    <a href="{% url 'login' %}" class="btn btn-white btn-success" role="button" aria-disabled="true">
+        {{ base_context.main_login_button }}
+    </a>
+
+    {% endif %}
+</div>

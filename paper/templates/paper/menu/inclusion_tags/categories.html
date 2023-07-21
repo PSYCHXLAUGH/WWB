@@ -1,0 +1,7 @@
+{% for cat in cats %}
+<div class="d-grid">
+  <a href="{{ cat.get_absolute_url }}" class="btn btn-primary btn-block" role="button"
+     aria-disabled="true">{{ cat.name }}</a>
+</div>
+<br>
+{% endfor %}

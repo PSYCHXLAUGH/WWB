@@ -1,0 +1,31 @@
+{% extends 'paper/base.html' %}
+
+{% block about %}
+
+<div class="container mt-3">
+  <h2>{{ base_context.index_login_header }}</h2>
+  <form method="post">
+    {% csrf_token %}
+
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger alert-dismissible fade show">
+      {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+    {% for f in form %}
+    <div class="mb-3 mt-3">
+      <label for="{{ f.id_for_label }}">{{ f.label }}</label>
+      {{ f }}
+    </div>
+
+    {% if f.errors %}
+    <div class="alert alert-danger alert-dismissible fade show">
+      {{ f.errors }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">{{ base_context.index_login_button }}</button>
+  </form>
+</div>
+{% endblock about %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% load static %} <!-- load css & js files -->
+{% load paper_tags %} <!-- load user tags -->
+
+<!-- user tags-->
+{% load_base_context as base_context %} <!-- base template keywords-->
+<!-- inclusion tags -->
+
+<html lang="ru">
+<head>
+    <!-- meta & css + js -->
+    {% include 'paper/header/head.html' %}
+
+    <!-- static imports -->
+    <link type="text/css" rel="stylesheet" href="{% static 'paper/css/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'paper/images/icon.png' %}" type="image/png">
+    <!-- meta & css + js -->
+
+</head>
+
+<body>
+
+<!-- main content -->
+{% include 'paper/header/header.html' %}
+{% if request.user.is_authenticated %}
+{% include 'paper/menu/canvas_menu.html' %}
+{% include 'paper/menu/canvas_menu_modal.html' %}
+<!-- input/output for routes -->
+<!-- input/output for routes -->
+{% block content %}
+{% endblock content %}
+{% endif %}
+<!-- register / login -->
+{% block about %}
+{% endblock about %}
+<!-- register / login -->
+</body>
+</html>

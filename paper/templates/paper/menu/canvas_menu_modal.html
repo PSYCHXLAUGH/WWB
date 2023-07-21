@@ -1,0 +1,28 @@
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">{{ base_context.menu_modal_title}}</h4> <!--menu_modal_title-->
+            </div>
+            <!-- Modal Header -->
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                {% load paper_tags %}
+                {% load_categories %}
+            </div>
+            <!-- Modal body -->
+
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">{{ base_context.menu_modal_button }}
+                </button> <!-- menu_button_modal -->
+            </div>
+            <!-- Modal footer -->
+
+        </div>
+    </div>
+</div>
